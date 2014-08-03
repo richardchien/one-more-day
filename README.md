@@ -1,4 +1,4 @@
-one-more-day
+OneMoreDay 又一天
 ============
 
-An app to help you form a habit.
+This is an app to help you form a habit.

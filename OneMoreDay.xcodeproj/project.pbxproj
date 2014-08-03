@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		79F946CD198CFDDC0007D466 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946CC198CFDDC0007D466 /* Foundation.framework */; };
+		79F946CF198CFDDC0007D466 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946CE198CFDDC0007D466 /* CoreGraphics.framework */; };
+		79F946D1198CFDDC0007D466 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946D0198CFDDC0007D466 /* UIKit.framework */; };
+		79F946D7198CFDDC0007D466 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79F946D5198CFDDC0007D466 /* InfoPlist.strings */; };
+		79F946D9198CFDDC0007D466 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F946D8198CFDDC0007D466 /* main.m */; };
+		79F946DD198CFDDC0007D466 /* OMDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F946DC198CFDDC0007D466 /* OMDAppDelegate.m */; };
+		79F946E0198CFDDC0007D466 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F946DE198CFDDC0007D466 /* Main_iPhone.storyboard */; };
+		79F946E3198CFDDC0007D466 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F946E1198CFDDC0007D466 /* Main_iPad.storyboard */; };
+		79F946E6198CFDDC0007D466 /* OMDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F946E5198CFDDC0007D466 /* OMDViewController.m */; };
+		79F946E8198CFDDC0007D466 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F946E7198CFDDC0007D466 /* Images.xcassets */; };
+		79F946EF198CFDDC0007D466 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946EE198CFDDC0007D466 /* XCTest.framework */; };
+		79F946F0198CFDDC0007D466 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946CC198CFDDC0007D466 /* Foundation.framework */; };
+		79F946F1198CFDDC0007D466 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946D0198CFDDC0007D466 /* UIKit.framework */; };
+		79F946F9198CFDDC0007D466 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79F946F7198CFDDC0007D466 /* InfoPlist.strings */; };
+		79F946FB198CFDDC0007D466 /* OneMoreDayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79F946F2198CFDDC0007D466 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79F946C1198CFDDC0007D466 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79F946C8198CFDDC0007D466;
+			remoteInfo = OneMoreDay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		79F946C9198CFDDC0007D466 /* OneMoreDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneMoreDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F946CC198CFDDC0007D466 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		79F946CE198CFDDC0007D466 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		79F946D0198CFDDC0007D466 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		79F946D4198CFDDC0007D466 /* OneMoreDay-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneMoreDay-Info.plist"; sourceTree = "<group>"; };
+		79F946D6198CFDDC0007D466 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		79F946D8198CFDDC0007D466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		79F946DA198CFDDC0007D466 /* OneMoreDay-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneMoreDay-Prefix.pch"; sourceTree = "<group>"; };
+		79F946DB198CFDDC0007D466 /* OMDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMDAppDelegate.h; sourceTree = "<group>"; };
+		79F946DC198CFDDC0007D466 /* OMDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMDAppDelegate.m; sourceTree = "<group>"; };
+		79F946DF198CFDDC0007D466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		79F946E2198CFDDC0007D466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		79F946E4198CFDDC0007D466 /* OMDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMDViewController.h; sourceTree = "<group>"; };
+		79F946E5198CFDDC0007D466 /* OMDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMDViewController.m; sourceTree = "<group>"; };
+		79F946E7198CFDDC0007D466 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		79F946ED198CFDDC0007D466 /* OneMoreDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneMoreDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F946EE198CFDDC0007D466 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		79F946F6198CFDDC0007D466 /* OneMoreDayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneMoreDayTests-Info.plist"; sourceTree = "<group>"; };
+		79F946F8198CFDDC0007D466 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneMoreDayTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79F946C6198CFDDC0007D466 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946CF198CFDDC0007D466 /* CoreGraphics.framework in Frameworks */,
+				79F946D1198CFDDC0007D466 /* UIKit.framework in Frameworks */,
+				79F946CD198CFDDC0007D466 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79F946EA198CFDDC0007D466 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946EF198CFDDC0007D466 /* XCTest.framework in Frameworks */,
+				79F946F1198CFDDC0007D466 /* UIKit.framework in Frameworks */,
+				79F946F0198CFDDC0007D466 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79F946C0198CFDDC0007D466 = {
+			isa = PBXGroup;
+			children = (
+				79F946D2198CFDDC0007D466 /* OneMoreDay */,
+				79F946F4198CFDDC0007D466 /* OneMoreDayTests */,
+				79F946CB198CFDDC0007D466 /* Frameworks */,
+				79F946CA198CFDDC0007D466 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		79F946CA198CFDDC0007D466 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79F946C9198CFDDC0007D466 /* OneMoreDay.app */,
+				79F946ED198CFDDC0007D466 /* OneMoreDayTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79F946CB198CFDDC0007D466 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79F946CC198CFDDC0007D466 /* Foundation.framework */,
+				79F946CE198CFDDC0007D466 /* CoreGraphics.framework */,
+				79F946D0198CFDDC0007D466 /* UIKit.framework */,
+				79F946EE198CFDDC0007D466 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		79F946D2198CFDDC0007D466 /* OneMoreDay */ = {
+			isa = PBXGroup;
+			children = (
+				79F946DB198CFDDC0007D466 /* OMDAppDelegate.h */,
+				79F946DC198CFDDC0007D466 /* OMDAppDelegate.m */,
+				79F946DE198CFDDC0007D466 /* Main_iPhone.storyboard */,
+				79F946E1198CFDDC0007D466 /* Main_iPad.storyboard */,
+				79F946E4198CFDDC0007D466 /* OMDViewController.h */,
+				79F946E5198CFDDC0007D466 /* OMDViewController.m */,
+				79F946E7198CFDDC0007D466 /* Images.xcassets */,
+				79F946D3198CFDDC0007D466 /* Supporting Files */,
+			);
+			path = OneMoreDay;
+			sourceTree = "<group>";
+		};
+		79F946D3198CFDDC0007D466 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79F946D4198CFDDC0007D466 /* OneMoreDay-Info.plist */,
+				79F946D5198CFDDC0007D466 /* InfoPlist.strings */,
+				79F946D8198CFDDC0007D466 /* main.m */,
+				79F946DA198CFDDC0007D466 /* OneMoreDay-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79F946F4198CFDDC0007D466 /* OneMoreDayTests */ = {
+			isa = PBXGroup;
+			children = (
+				79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */,
+				79F946F5198CFDDC0007D466 /* Supporting Files */,
+			);
+			path = OneMoreDayTests;
+			sourceTree = "<group>";
+		};
+		79F946F5198CFDDC0007D466 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79F946F6198CFDDC0007D466 /* OneMoreDayTests-Info.plist */,
+				79F946F7198CFDDC0007D466 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		79F946C8198CFDDC0007D466 /* OneMoreDay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79F946FE198CFDDC0007D466 /* Build configuration list for PBXNativeTarget "OneMoreDay" */;
+			buildPhases = (
+				79F946C5198CFDDC0007D466 /* Sources */,
+				79F946C6198CFDDC0007D466 /* Frameworks */,
+				79F946C7198CFDDC0007D466 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneMoreDay;
+			productName = OneMoreDay;
+			productReference = 79F946C9198CFDDC0007D466 /* OneMoreDay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		79F946EC198CFDDC0007D466 /* OneMoreDayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79F94701198CFDDC0007D466 /* Build configuration list for PBXNativeTarget "OneMoreDayTests" */;
+			buildPhases = (
+				79F946E9198CFDDC0007D466 /* Sources */,
+				79F946EA198CFDDC0007D466 /* Frameworks */,
+				79F946EB198CFDDC0007D466 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79F946F3198CFDDC0007D466 /* PBXTargetDependency */,
+			);
+			name = OneMoreDayTests;
+			productName = OneMoreDayTests;
+			productReference = 79F946ED198CFDDC0007D466 /* OneMoreDayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79F946C1198CFDDC0007D466 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OMD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Richard Chien";
+				TargetAttributes = {
+					79F946C8198CFDDC0007D466 = {
+						DevelopmentTeam = JA4F747PM8;
+					};
+					79F946EC198CFDDC0007D466 = {
+						TestTargetID = 79F946C8198CFDDC0007D466;
+					};
+				};
+			};
+			buildConfigurationList = 79F946C4198CFDDC0007D466 /* Build configuration list for PBXProject "OneMoreDay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 79F946C0198CFDDC0007D466;
+			productRefGroup = 79F946CA198CFDDC0007D466 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79F946C8198CFDDC0007D466 /* OneMoreDay */,
+				79F946EC198CFDDC0007D466 /* OneMoreDayTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79F946C7198CFDDC0007D466 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946E3198CFDDC0007D466 /* Main_iPad.storyboard in Resources */,
+				79F946E8198CFDDC0007D466 /* Images.xcassets in Resources */,
+				79F946E0198CFDDC0007D466 /* Main_iPhone.storyboard in Resources */,
+				79F946D7198CFDDC0007D466 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79F946EB198CFDDC0007D466 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946F9198CFDDC0007D466 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79F946C5198CFDDC0007D466 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946E6198CFDDC0007D466 /* OMDViewController.m in Sources */,
+				79F946D9198CFDDC0007D466 /* main.m in Sources */,
+				79F946DD198CFDDC0007D466 /* OMDAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79F946E9198CFDDC0007D466 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79F946FB198CFDDC0007D466 /* OneMoreDayTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		79F946F3198CFDDC0007D466 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79F946C8198CFDDC0007D466 /* OneMoreDay */;
+			targetProxy = 79F946F2198CFDDC0007D466 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		79F946D5198CFDDC0007D466 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79F946D6198CFDDC0007D466 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		79F946DE198CFDDC0007D466 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79F946DF198CFDDC0007D466 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		79F946E1198CFDDC0007D466 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79F946E2198CFDDC0007D466 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		79F946F7198CFDDC0007D466 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79F946F8198CFDDC0007D466 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		79F946FC198CFDDC0007D466 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79F946FD198CFDDC0007D466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		79F946FF198CFDDC0007D466 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneMoreDay/OneMoreDay-Prefix.pch";
+				INFOPLIST_FILE = "OneMoreDay/OneMoreDay-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		79F94700198CFDDC0007D466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneMoreDay/OneMoreDay-Prefix.pch";
+				INFOPLIST_FILE = "OneMoreDay/OneMoreDay-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		79F94702198CFDDC0007D466 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OneMoreDay.app/OneMoreDay";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneMoreDay/OneMoreDay-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OneMoreDayTests/OneMoreDayTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		79F94703198CFDDC0007D466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OneMoreDay.app/OneMoreDay";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OneMoreDay/OneMoreDay-Prefix.pch";
+				INFOPLIST_FILE = "OneMoreDayTests/OneMoreDayTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79F946C4198CFDDC0007D466 /* Build configuration list for PBXProject "OneMoreDay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79F946FC198CFDDC0007D466 /* Debug */,
+				79F946FD198CFDDC0007D466 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79F946FE198CFDDC0007D466 /* Build configuration list for PBXNativeTarget "OneMoreDay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79F946FF198CFDDC0007D466 /* Debug */,
+				79F94700198CFDDC0007D466 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79F94701198CFDDC0007D466 /* Build configuration list for PBXNativeTarget "OneMoreDayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79F94702198CFDDC0007D466 /* Debug */,
+				79F94703198CFDDC0007D466 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79F946C1198CFDDC0007D466 /* Project object */;
+}
