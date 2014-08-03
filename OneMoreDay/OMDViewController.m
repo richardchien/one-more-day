@@ -72,7 +72,6 @@ UIColor *CFRandomColor()
     
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
     {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
         NSLog(@"First Launch");
         
         [self firstLaunch];
@@ -128,6 +127,7 @@ UIColor *CFRandomColor()
     } else {
         [popTip hide];
         [sender removeFromSuperview];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
         [self.view viewWithTag:kFormNewHabitBtnTag].userInteractionEnabled = YES;
         [self.view viewWithTag:kDaysViewTag].userInteractionEnabled = YES;
         [self.view viewWithTag:kGoBtnTag].userInteractionEnabled = YES;
