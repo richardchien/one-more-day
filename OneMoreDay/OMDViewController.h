@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LCAlertView.h"
 
 const int kGoBtnTag = 101;
 const int kDaysViewTag = 102;
+const int kFormNewHabitBtnTag = 103;
 
 typedef enum {
     OMDDateCompareResultPast,
@@ -21,8 +23,9 @@ typedef enum {
 const NSString *kLastDateKey = @"LastDate";
 const NSString *kDaysPersistedKey = @"DaysPersisted";
 
-@interface OMDViewController : UIViewController
+@interface OMDViewController : UIViewController <LCAlertViewDelegate>
 
 - (IBAction)goOneMoreDay;
+- (IBAction)formNewHabit:(id)sender;
 
 @end

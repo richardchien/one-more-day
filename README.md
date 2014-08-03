@@ -1,4 +1,4 @@
-OneMoreDay 又一天
+OneMoreDay
 ============
 
 This is an app to help you form habits.

@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="143" id="4WH-ec-gIL"/>
                                     <constraint firstAttribute="width" constant="180" id="9Rk-L5-oFF"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="GoBtn">
+                                <state key="normal" title="Check" image="GoBtn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -39,7 +39,7 @@
                                         <color key="textColor" red="0.0" green="0.52921660958904104" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 Days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM9-Jz-giP">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM9-Jz-giP">
                                         <rect key="frame" x="20" y="32" width="280" height="100"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="54"/>
                                         <color key="textColor" red="0.0" green="0.52921660958904104" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,11 +52,28 @@
                                     <constraint firstAttribute="height" constant="132" id="ic4-wu-55d"/>
                                 </constraints>
                             </view>
+                            <button appearanceType="aqua" opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tg9-0n-Dyp">
+                                <rect key="frame" x="20" y="538" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="aky-eo-Bbd"/>
+                                    <constraint firstAttribute="height" constant="31" id="ya0-2s-DzN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Click to Form A New Habit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="formNewHabit:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5hB-lf-qt6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Tg9-0n-Dyp" secondAttribute="centerX" id="5nY-Uh-8mT"/>
                             <constraint firstAttribute="centerX" secondItem="AX6-wW-Izq" secondAttribute="centerX" id="KCY-tg-vzR"/>
                             <constraint firstAttribute="centerX" secondItem="kPF-LZ-pow" secondAttribute="centerX" constant="-7" id="O2B-ca-NrK"/>
+                            <constraint firstAttribute="bottom" secondItem="Tg9-0n-Dyp" secondAttribute="bottom" constant="-1" id="SNi-J5-8SQ"/>
                             <constraint firstAttribute="centerY" secondItem="AX6-wW-Izq" secondAttribute="centerY" id="Sqh-rA-Qnp"/>
                             <constraint firstAttribute="centerY" secondItem="kPF-LZ-pow" secondAttribute="centerY" id="fHf-uF-Rl3"/>
                         </constraints>

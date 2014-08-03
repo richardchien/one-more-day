@@ -1,0 +1,12 @@
+
+/* Class = "IBUIButton"; normalTitle = "Click to Form A New Habit"; ObjectID = "Tg9-0n-Dyp"; */
+"Tg9-0n-Dyp.normalTitle" = "Click to Form A New Habit";
+
+/* Class = "IBUILabel"; text = "0 Days"; ObjectID = "XM9-Jz-giP"; */
+"XM9-Jz-giP.text" = "0 Day";
+
+/* Class = "IBUILabel"; text = "You have persisted for"; ObjectID = "eVb-nA-a10"; */
+"eVb-nA-a10.text" = "You have persisted for";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "kPF-LZ-pow"; */
+"kPF-LZ-pow.normalTitle" = "Check";

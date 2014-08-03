@@ -7,6 +7,7 @@
 //
 
 #import "OMDViewController.h"
+#import "AMPopTip.h"
 
 @interface OMDViewController ()
 {
@@ -14,6 +15,7 @@
     NSDictionary *data;
     NSTimer *checkDateTimer;
     OMDDateCompareResult prevResult;
+    AMPopTip *popTip;
 }
 
 @end
@@ -66,8 +68,73 @@ UIColor *CFRandomColor()
     UIColor *color = CFRandomColor();
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setTextColor:color]; // DaysPersisted Label
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:2] setTextColor:color]; // "You have persisted for" Label
+    [(UIButton *)[self.view viewWithTag:kFormNewHabitBtnTag] setTintColor:color];
     
-    checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
+        NSLog(@"First Launch");
+        
+        [self firstLaunch];
+    } else {
+        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)firstLaunch
+{
+    UIButton *nextTipBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 60.0, [self.view viewWithTag:kDaysViewTag].frame.origin.y/2 + 20.0, 120.0, 40.0)];
+    nextTipBtn.backgroundColor = [UIColor blueColor];
+    [nextTipBtn setTitle:NSLocalizedString(@"NEXT_TIP_BTN_TITLE", nil) forState:UIControlStateNormal];
+    [nextTipBtn addTarget:self action:@selector(nextTip:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextTipBtn];
+    
+    [self.view viewWithTag:kFormNewHabitBtnTag].userInteractionEnabled = NO;
+    [self.view viewWithTag:kDaysViewTag].userInteractionEnabled = NO;
+    [self.view viewWithTag:kGoBtnTag].userInteractionEnabled = NO;
+    [[self.view viewWithTag:kDaysViewTag] viewWithTag:1].userInteractionEnabled = NO;
+    [[self.view viewWithTag:kDaysViewTag] viewWithTag:2].userInteractionEnabled = NO;
+    
+    [[AMPopTip appearance] setFont:[UIFont fontWithName:@"Avenir-Medium" size:12]];
+    popTip = [AMPopTip popTip];
+    popTip.popoverColor = [UIColor lightGrayColor];
+    [popTip showText:NSLocalizedString(@"TIP1_MSG", nil)
+           direction:AMPopTipDirectionDown
+            maxWidth:240.0
+              inView:self.view
+           fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)];
+}
+
+- (void)nextTip:(id)sender
+{
+    static int tipNum = 1;
+    tipNum++;
+    
+    if (tipNum == 2) {
+        [popTip hide];
+        [popTip showText:NSLocalizedString(@"TIP2_MSG", nil)
+               direction:AMPopTipDirectionDown
+                maxWidth:240.0
+                  inView:self.view
+               fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)];
+    } else if (tipNum == 3) {
+        [popTip hide];
+        [sender setTitle:NSLocalizedString(@"START_USING_BTN_TITLE", nil) forState:UIControlStateNormal];
+        [popTip showText:NSLocalizedString(@"TIP3_MSG", nil)
+               direction:AMPopTipDirectionUp
+                maxWidth:240.0
+                  inView:self.view
+               fromFrame:[self.view viewWithTag:kFormNewHabitBtnTag].frame];
+    } else {
+        [popTip hide];
+        [sender removeFromSuperview];
+        [self.view viewWithTag:kFormNewHabitBtnTag].userInteractionEnabled = YES;
+        [self.view viewWithTag:kDaysViewTag].userInteractionEnabled = YES;
+        [self.view viewWithTag:kGoBtnTag].userInteractionEnabled = YES;
+        [[self.view viewWithTag:kDaysViewTag] viewWithTag:1].userInteractionEnabled = YES;
+        [[self.view viewWithTag:kDaysViewTag] viewWithTag:2].userInteractionEnabled = YES;
+        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)checkDateLoop
@@ -125,16 +192,20 @@ UIColor *CFRandomColor()
                     data[kLastDateKey], kLastDateKey,
                     [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
         case OMDDateCompareResultFutureOneDay:
-            [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
+            //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
+            [self refreshDayLabel];
+            
             CGRect daysViewRect = daysViewDisplayFrame;
-            daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 50.0);
+            daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 200.0);
             [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
             break;
         case OMDDateCompareResultPast:
         case OMDDateCompareResultSame:
-            [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
+            //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
+            [self refreshDayLabel];
+            
             CGRect goBtnRect = goBtnDisplayFrame;
-            goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 50.0);
+            goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 200.0);
             [self.view viewWithTag:kGoBtnTag].frame = goBtnRect;
             break;
         default:
@@ -242,15 +313,37 @@ BOOL CFYearIsLeapYear(NSInteger year)
             [NSNumber numberWithInt:daysPersisted+1], kDaysPersistedKey, nil];
     [data writeToFile:FILEPATH atomically:YES];
     
-    [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
+    //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
+    [self refreshDayLabel];
+    
+    if (popTip != nil) { // First launch
+        LCAlertView *alert = [[LCAlertView alloc] initWithTitle:NSLocalizedString(@"CONGRATULATION", nil)
+                                                        message:NSLocalizedString(@"CONG_MSG", nil)
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"I_GOT_IT_BTN_TITLE", nil)
+                                              otherButtonTitles:nil, nil];
+        alert.alertAnimationStyle = LCAlertAnimationDefault;
+        [alert show];
+    }
     
     [self displayDaysView];
+}
+
+- (IBAction)formNewHabit:(id)sender
+{
+    LCAlertView *alert = [[LCAlertView alloc] initWithTitle:NSLocalizedString(@"NOTICE", nil)
+                                                    message:NSLocalizedString(@"NOTICE_MSG", nil)
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"YES_BTN_TITLE", nil)
+                                          otherButtonTitles:NSLocalizedString(@"NO_BTN_TITLE", nil), nil];
+    alert.alertAnimationStyle = LCAlertAnimationDefault;
+    [alert show];
 }
 
 - (void)displayDaysView
 {
     CGRect goBtnRect = goBtnDisplayFrame;
-    goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 50.0);
+    goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 200.0);
     [UIView beginAnimations:@"Display DaysView" context:nil];
     [self.view viewWithTag:kGoBtnTag].frame = goBtnRect;
     [self.view viewWithTag:kDaysViewTag].frame = daysViewDisplayFrame;
@@ -260,11 +353,36 @@ BOOL CFYearIsLeapYear(NSInteger year)
 - (void)displayGoBtn
 {
     CGRect daysViewRect = daysViewDisplayFrame;
-    daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 50.0);
+    daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 200.0);
     [UIView beginAnimations:@"Display GoBtn" context:nil];
     [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
     [self.view viewWithTag:kGoBtnTag].frame = goBtnDisplayFrame;
     [UIView commitAnimations];
+}
+
+- (void)refreshDayLabel
+{
+    NSString *dayStr = [NSString stringWithFormat:@"%@ %@", data[kDaysPersistedKey], NSLocalizedString(@"DAY", nil)];
+    if ([dayStr hasSuffix:@"Day"]) { // System language is English
+        dayStr = [dayStr stringByAppendingString:[data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""];
+    }
+    [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:dayStr];
+}
+
+- (void)alertView:(LCAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"%ld", (long)buttonIndex);
+    const NSInteger kYesBtn = 0;
+    //const NSInteger kNoBtn = 1;
+    
+    if (buttonIndex == kYesBtn) {
+        data = [NSDictionary dictionaryWithObjectsAndKeys:
+                [NSDate dateWithTimeIntervalSince1970:0], kLastDateKey,
+                [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
+        [data writeToFile:FILEPATH atomically:YES];
+        
+        [self displayGoBtn];
+    }
 }
 
 @end
