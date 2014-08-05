@@ -63,20 +63,20 @@ UIColor *CFRandomColor()
     
     NSDate *lastDate = data[kLastDateKey];
     NSDate *nowDate = [NSDate date];
-    prevResult = [self compareOneDay:lastDate WithAnother:nowDate];
+    prevResult = [self compareOneDay:lastDate WithAnother:nowDate]; // Get current date compare result, for checkDateTimer
     
-    UIColor *color = CFRandomColor();
+    UIColor *color = CFRandomColor(); // Get random color every time the view loaded
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setTextColor:color]; // DaysPersisted Label
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:2] setTextColor:color]; // "You have persisted for" Label
-    [(UIButton *)[self.view viewWithTag:kFormNewHabitBtnTag] setTintColor:color];
+    [(UIButton *)[self.view viewWithTag:kFormNewHabitBtnTag] setTintColor:color]; // Form new habit button at bottom of view
     
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"])
     {
         NSLog(@"First Launch");
         
-        [self firstLaunch];
+        [self firstLaunch];// First launch, show tips
     } else {
-        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES];
+        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES]; // It's not first launch, so directly start checkDateTimer
     }
 }
 
@@ -88,6 +88,7 @@ UIColor *CFRandomColor()
     [nextTipBtn addTarget:self action:@selector(nextTip:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextTipBtn];
     
+    // Disable all items while showing tips
     [self.view viewWithTag:kFormNewHabitBtnTag].userInteractionEnabled = NO;
     [self.view viewWithTag:kDaysViewTag].userInteractionEnabled = NO;
     [self.view viewWithTag:kGoBtnTag].userInteractionEnabled = NO;
@@ -101,7 +102,7 @@ UIColor *CFRandomColor()
            direction:AMPopTipDirectionDown
             maxWidth:240.0
               inView:self.view
-           fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)];
+           fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)]; // Show tip 1
 }
 
 - (void)nextTip:(id)sender
@@ -115,7 +116,7 @@ UIColor *CFRandomColor()
                direction:AMPopTipDirectionDown
                 maxWidth:240.0
                   inView:self.view
-               fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)];
+               fromFrame:CGRectMake((self.view.frame.size.width - 180.0)/2, self.view.frame.size.height/2 - 72.0, 180.0, 143)]; // Show tip 2
     } else if (tipNum == 3) {
         [popTip hide];
         [sender setTitle:NSLocalizedString(@"START_USING_BTN_TITLE", nil) forState:UIControlStateNormal];
@@ -123,22 +124,26 @@ UIColor *CFRandomColor()
                direction:AMPopTipDirectionUp
                 maxWidth:240.0
                   inView:self.view
-               fromFrame:[self.view viewWithTag:kFormNewHabitBtnTag].frame];
+               fromFrame:[self.view viewWithTag:kFormNewHabitBtnTag].frame]; // Show tip 3
     } else {
-        [popTip hide];
+        [popTip hide]; // All tips have been shown already
         [sender removeFromSuperview];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
+        
+        // Enable all items
         [self.view viewWithTag:kFormNewHabitBtnTag].userInteractionEnabled = YES;
         [self.view viewWithTag:kDaysViewTag].userInteractionEnabled = YES;
         [self.view viewWithTag:kGoBtnTag].userInteractionEnabled = YES;
         [[self.view viewWithTag:kDaysViewTag] viewWithTag:1].userInteractionEnabled = YES;
         [[self.view viewWithTag:kDaysViewTag] viewWithTag:2].userInteractionEnabled = YES;
-        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES];
+        checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES]; // Start checkDateTimer
     }
 }
 
 - (void)checkDateLoop
 {
+    // This loop is to check the date's change, in order to switch views at about 00:00
+    
     NSDate *lastDate = data[kLastDateKey];
     NSDate *nowDate = [NSDate date];
     OMDDateCompareResult currentResult = [self compareOneDay:lastDate WithAnother:nowDate];
@@ -160,39 +165,21 @@ UIColor *CFRandomColor()
 {
     [super viewDidLayoutSubviews];
     
+    // Autolayout help layout the view
+    // Every time the view did layout subviews, update the frames of DaysView and GoBtn
     daysViewDisplayFrame = [self.view viewWithTag:kDaysViewTag].frame;
     goBtnDisplayFrame = [self.view viewWithTag:kGoBtnTag].frame;
     
+    // Check the date to decide whether to show the DaysView or GoBtn
     NSDate *lastDate = data[kLastDateKey];
     NSDate *nowDate = [NSDate date];
     OMDDateCompareResult result = [self compareOneDay:lastDate WithAnother:nowDate];
-    /*if (result == OMDDateCompareResultFutureOneDay) {
-        [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
-        CGRect daysViewRect = daysViewDisplayFrame;
-        daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 50.0);
-        [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
-    } else if (result == OMDDateCompareResultFuture) {
-        //[data setValue:[NSNumber numberWithInt:0] forKey:@"DaysPersisted"];
-        data = [NSDictionary dictionaryWithObjectsAndKeys:
-                data[kLastDateKey], kLastDateKey,
-                [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
-        [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
-        CGRect daysViewRect = daysViewDisplayFrame;
-        daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 50.0);
-        [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
-    } else {
-        [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Days", data[kDaysPersistedKey]]];
-        CGRect goBtnRect = goBtnDisplayFrame;
-        goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 50.0);
-        [self.view viewWithTag:kGoBtnTag].frame = goBtnRect;
-    }*/
     switch (result) {
         case OMDDateCompareResultFuture:
             data = [NSDictionary dictionaryWithObjectsAndKeys:
                     data[kLastDateKey], kLastDateKey,
-                    [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
+                    [NSNumber numberWithInt:0], kDaysPersistedKey, nil]; // Over 2 days not punch the clock, clear the days
         case OMDDateCompareResultFutureOneDay:
-            //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
             [self refreshDayLabel];
             
             CGRect daysViewRect = daysViewDisplayFrame;
@@ -201,7 +188,6 @@ UIColor *CFRandomColor()
             break;
         case OMDDateCompareResultPast:
         case OMDDateCompareResultSame:
-            //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
             [self refreshDayLabel];
             
             CGRect goBtnRect = goBtnDisplayFrame;
@@ -280,6 +266,11 @@ BOOL CFYearIsLeapYear(NSInteger year)
             }
         }
     }
+    
+    // FutureOneDay: "anotherDay" is "oneDay" + 1 day
+    // Future: "anotherDay" is "oneDay" + 2 or more days
+    // Same: same
+    // Past: "anotherDay" is former than "oneDay"
 }
 
 - (void)readOrCreateDataFile
@@ -296,6 +287,7 @@ BOOL CFYearIsLeapYear(NSInteger year)
 
 - (IBAction)goOneMoreDay
 {
+    // Check the date, if 2 days not punch the clock, clear the days
     NSDate *lastDate = data[kLastDateKey];
     NSDate *nowDate = [NSDate date];
     OMDDateCompareResult result = [self compareOneDay:lastDate WithAnother:nowDate];
@@ -305,18 +297,16 @@ BOOL CFYearIsLeapYear(NSInteger year)
                 [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
     }
     
+    // Add the days and save data
     int daysPersisted = [data[kDaysPersistedKey] intValue];
-    //[data setValue:[NSNumber numberWithInt:daysPersisted+1] forKey:@"DaysPersisted"];
-    //[data setValue:[NSDate date] forKey:@"LastDate"];
     data = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSDate date], kLastDateKey,
             [NSNumber numberWithInt:daysPersisted+1], kDaysPersistedKey, nil];
     [data writeToFile:FILEPATH atomically:YES];
     
-    //[(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:[NSString stringWithFormat:@"%@ Day%@", data[kDaysPersistedKey], [data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""]];
     [self refreshDayLabel];
     
-    if (popTip != nil) { // First launch
+    if (popTip != nil) { // If is first launch, show congratulation popup
         LCAlertView *alert = [[LCAlertView alloc] initWithTitle:NSLocalizedString(@"CONGRATULATION", nil)
                                                         message:NSLocalizedString(@"CONG_MSG", nil)
                                                        delegate:nil
@@ -326,7 +316,7 @@ BOOL CFYearIsLeapYear(NSInteger year)
         [alert show];
     }
     
-    [self displayDaysView];
+    [self displayDaysView]; // Switch to DaysView
 }
 
 - (IBAction)formNewHabit:(id)sender
@@ -373,7 +363,6 @@ BOOL CFYearIsLeapYear(NSInteger year)
 {
     NSLog(@"%ld", (long)buttonIndex);
     const NSInteger kYesBtn = 0;
-    //const NSInteger kNoBtn = 1;
     
     if (buttonIndex == kYesBtn) {
         data = [NSDictionary dictionaryWithObjectsAndKeys:
