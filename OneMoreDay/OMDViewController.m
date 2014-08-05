@@ -22,13 +22,15 @@
 
 @implementation OMDViewController
 
+#pragma mark - C Functions
+
+#define FILEPATH CFDataFilePath()
+
 NSString *CFDataFilePath()
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths[0] stringByAppendingPathComponent:@"data.plist"];
 }
-
-#define FILEPATH CFDataFilePath()
 
 UIColor *CFRandomColor()
 {
@@ -45,15 +47,24 @@ UIColor *CFRandomColor()
             red = rand() % 158;
             green = rand() % 255;
             blue = rand() % 158;
+            break;
         case 2:
             red = rand() % 158;
             green = rand() % 158;
             blue = rand() % 255;
+            break;
         default:
             break;
     }
     return [UIColor colorWithRed:(float)red/255.0 green:(float)green/255.0 blue:(float)blue/255.0 alpha:1.0];
 }
+
+BOOL CFYearIsLeapYear(NSInteger year)
+{
+    return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? YES : NO;
+}
+
+#pragma mark - View Load and Layout
 
 - (void)viewDidLoad
 {
@@ -79,6 +90,81 @@ UIColor *CFRandomColor()
         checkDateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDateLoop) userInfo:nil repeats:YES]; // It's not first launch, so directly start checkDateTimer
     }
 }
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // Autolayout help layout the view
+    // Every time the view did layout subviews, update the frames of DaysView and GoBtn
+    daysViewDisplayFrame = [self.view viewWithTag:kDaysViewTag].frame;
+    goBtnDisplayFrame = [self.view viewWithTag:kGoBtnTag].frame;
+    
+    // Check the date to decide whether to show the DaysView or GoBtn
+    NSDate *lastDate = data[kLastDateKey];
+    NSDate *nowDate = [NSDate date];
+    OMDDateCompareResult result = [self compareOneDay:lastDate WithAnother:nowDate];
+    switch (result) {
+        case OMDDateCompareResultFuture:
+            data = [NSDictionary dictionaryWithObjectsAndKeys:
+                    data[kLastDateKey], kLastDateKey,
+                    [NSNumber numberWithInt:0], kDaysPersistedKey, nil]; // Over 2 days not punch the clock, clear the days
+        case OMDDateCompareResultFutureOneDay:
+            [self refreshDayLabel];
+            
+            CGRect daysViewRect = daysViewDisplayFrame;
+            daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 200.0);
+            [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
+            break;
+        case OMDDateCompareResultPast:
+        case OMDDateCompareResultSame:
+            [self refreshDayLabel];
+            
+            CGRect goBtnRect = goBtnDisplayFrame;
+            goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 200.0);
+            [self.view viewWithTag:kGoBtnTag].frame = goBtnRect;
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - Basic
+
+- (void)readOrCreateDataFile
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:FILEPATH]) {
+        data = [NSDictionary dictionaryWithContentsOfFile:FILEPATH];
+    } else {
+        data = [NSDictionary dictionaryWithObjectsAndKeys:
+                [NSDate dateWithTimeIntervalSince1970:0], kLastDateKey,
+                [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
+        [data writeToFile:FILEPATH atomically:YES];
+    }
+}
+
+- (void)checkDateLoop
+{
+    // This loop is to check the date's change, in order to switch views at about 00:00
+    
+    NSDate *lastDate = data[kLastDateKey];
+    NSDate *nowDate = [NSDate date];
+    OMDDateCompareResult currentResult = [self compareOneDay:lastDate WithAnother:nowDate];
+    NSLog(@"%d - %d", prevResult, currentResult);
+    if (prevResult == OMDDateCompareResultFuture || prevResult == OMDDateCompareResultFutureOneDay) {
+        prevResult = currentResult;
+        if (currentResult == OMDDateCompareResultSame || currentResult == OMDDateCompareResultPast) {
+            [self displayDaysView];
+        }
+    } else {
+        prevResult = currentResult;
+        if (currentResult == OMDDateCompareResultFuture || currentResult == OMDDateCompareResultFutureOneDay) {
+            [self displayGoBtn];
+        }
+    }
+}
+
+#pragma mark - First Launch
 
 - (void)firstLaunch
 {
@@ -140,69 +226,7 @@ UIColor *CFRandomColor()
     }
 }
 
-- (void)checkDateLoop
-{
-    // This loop is to check the date's change, in order to switch views at about 00:00
-    
-    NSDate *lastDate = data[kLastDateKey];
-    NSDate *nowDate = [NSDate date];
-    OMDDateCompareResult currentResult = [self compareOneDay:lastDate WithAnother:nowDate];
-    NSLog(@"%d - %d", prevResult, currentResult);
-    if (prevResult == OMDDateCompareResultFuture || prevResult == OMDDateCompareResultFutureOneDay) {
-        prevResult = currentResult;
-        if (currentResult == OMDDateCompareResultSame || currentResult == OMDDateCompareResultPast) {
-            [self displayDaysView];
-        }
-    } else {
-        prevResult = currentResult;
-        if (currentResult == OMDDateCompareResultFuture || currentResult == OMDDateCompareResultFutureOneDay) {
-            [self displayGoBtn];
-        }
-    }
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    // Autolayout help layout the view
-    // Every time the view did layout subviews, update the frames of DaysView and GoBtn
-    daysViewDisplayFrame = [self.view viewWithTag:kDaysViewTag].frame;
-    goBtnDisplayFrame = [self.view viewWithTag:kGoBtnTag].frame;
-    
-    // Check the date to decide whether to show the DaysView or GoBtn
-    NSDate *lastDate = data[kLastDateKey];
-    NSDate *nowDate = [NSDate date];
-    OMDDateCompareResult result = [self compareOneDay:lastDate WithAnother:nowDate];
-    switch (result) {
-        case OMDDateCompareResultFuture:
-            data = [NSDictionary dictionaryWithObjectsAndKeys:
-                    data[kLastDateKey], kLastDateKey,
-                    [NSNumber numberWithInt:0], kDaysPersistedKey, nil]; // Over 2 days not punch the clock, clear the days
-        case OMDDateCompareResultFutureOneDay:
-            [self refreshDayLabel];
-            
-            CGRect daysViewRect = daysViewDisplayFrame;
-            daysViewRect.origin = CGPointMake(daysViewRect.origin.x, -daysViewRect.size.height - 200.0);
-            [self.view viewWithTag:kDaysViewTag].frame = daysViewRect;
-            break;
-        case OMDDateCompareResultPast:
-        case OMDDateCompareResultSame:
-            [self refreshDayLabel];
-            
-            CGRect goBtnRect = goBtnDisplayFrame;
-            goBtnRect.origin = CGPointMake(goBtnRect.origin.x, self.view.frame.size.height + 200.0);
-            [self.view viewWithTag:kGoBtnTag].frame = goBtnRect;
-            break;
-        default:
-            break;
-    }
-}
-
-BOOL CFYearIsLeapYear(NSInteger year)
-{
-    return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? YES : NO;
-}
+#pragma mark - Data Compare
 
 - (OMDDateCompareResult)compareOneDay:(NSDate *)oneDay WithAnother:(NSDate *)anotherDay
 {
@@ -273,17 +297,7 @@ BOOL CFYearIsLeapYear(NSInteger year)
     // Past: "anotherDay" is former than "oneDay"
 }
 
-- (void)readOrCreateDataFile
-{
-    if ([[NSFileManager defaultManager] fileExistsAtPath:FILEPATH]) {
-        data = [NSDictionary dictionaryWithContentsOfFile:FILEPATH];
-    } else {
-        data = [NSDictionary dictionaryWithObjectsAndKeys:
-                [NSDate dateWithTimeIntervalSince1970:0], kLastDateKey,
-                [NSNumber numberWithInt:0], kDaysPersistedKey, nil];
-        [data writeToFile:FILEPATH atomically:YES];
-    }
-}
+#pragma mark - Button Actions
 
 - (IBAction)goOneMoreDay
 {
@@ -330,6 +344,8 @@ BOOL CFYearIsLeapYear(NSInteger year)
     [alert show];
 }
 
+#pragma mark - Adjust Views
+
 - (void)displayDaysView
 {
     CGRect goBtnRect = goBtnDisplayFrame;
@@ -358,6 +374,8 @@ BOOL CFYearIsLeapYear(NSInteger year)
     }
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:dayStr];
 }
+
+#pragma mark - Form New Habit Alert View Delegate
 
 - (void)alertView:(LCAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

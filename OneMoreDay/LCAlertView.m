@@ -250,7 +250,7 @@
             float height = kTitleYOffset+kTitleHeight+60+_buttons.count*kButtonHeight+kButtonBottomOffset;
             float trueHeight = 390.5>height?height:390.5;
             self.frame = CGRectMake((CGRectGetWidth([UIScreen mainScreen].bounds) - kAlertWidth) * 0.5, 0, kAlertWidth, trueHeight);
-            for (int i = (int)_buttons.count-1; i >= 0; i--) {
+            for (int i = (int)_buttons.count-(int)1; i >= 0; i--) {
                 UIButton *btn = [_buttons objectAtIndex:i];
                 btn.frame = CGRectMake((kAlertWidth - kSingleButtonWidth) * 0.5, trueHeight - kButtonBottomOffset - kButtonHeight * (_buttons.count-i), kSingleButtonWidth, kButtonHeight-kButtonOffset);
             }
