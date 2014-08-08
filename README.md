@@ -1,4 +1,4 @@
 One More Day for iOS
 ============
 
-This is an iOS app to help you form habits.
+This is an iOS app that helps you form habits.
