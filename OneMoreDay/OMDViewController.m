@@ -168,7 +168,7 @@ BOOL CFYearIsLeapYear(NSInteger year)
 
 - (void)firstLaunch
 {
-    UIButton *nextTipBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 60.0, [self.view viewWithTag:kDaysViewTag].frame.origin.y/2 + 20.0, 120.0, 40.0)];
+    UIButton *nextTipBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 90.0, [self.view viewWithTag:kDaysViewTag].frame.origin.y/2 + 20.0, 180.0, 40.0)];
     nextTipBtn.backgroundColor = [UIColor blueColor];
     [nextTipBtn setTitle:NSLocalizedString(@"NEXT_TIP_BTN_TITLE", nil) forState:UIControlStateNormal];
     [nextTipBtn addTarget:self action:@selector(nextTip:) forControlEvents:UIControlEventTouchUpInside];
@@ -369,7 +369,7 @@ BOOL CFYearIsLeapYear(NSInteger year)
 - (void)refreshDayLabel
 {
     NSString *dayStr = [NSString stringWithFormat:@"%@ %@", data[kDaysPersistedKey], NSLocalizedString(@"DAY", nil)];
-    if ([dayStr hasSuffix:@"Day"]) { // System language is English
+    if ([dayStr hasSuffix:@"Day"] || [dayStr hasSuffix:@"Jour"]) { // System language is English or French
         dayStr = [dayStr stringByAppendingString:[data[kDaysPersistedKey] intValue] > 1 ? @"s" : @""];
     }
     [(UILabel *)[[self.view viewWithTag:kDaysViewTag] viewWithTag:1] setText:dayStr];

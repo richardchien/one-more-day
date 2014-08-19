@@ -37,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		792612F419A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		792612F519A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		792612F619A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		792612F719A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79506BC7198E11A20039ACF0 /* AMPopTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPopTip.h; sourceTree = "<group>"; };
 		79506BC8198E11A20039ACF0 /* AMPopTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPopTip.m; sourceTree = "<group>"; };
 		79551026198DF71D00667506 /* LCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCAlertView.h; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 				Base,
 				"zh-Hans",
 				"zh-Hant",
+				fr,
 			);
 			mainGroup = 79F946C0198CFDDC0007D466;
 			productRefGroup = 79F946CA198CFDDC0007D466 /* Products */;
@@ -331,6 +336,7 @@
 				79FB056B198E314400CA8421 /* en */,
 				79FB0572198E318A00CA8421 /* zh-Hans */,
 				79FB0576198E318E00CA8421 /* zh-Hant */,
+				792612F519A0F9C4004CDE48 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				79FB056A198E313000CA8421 /* en */,
 				79FB0571198E318A00CA8421 /* zh-Hans */,
 				79FB0575198E318E00CA8421 /* zh-Hant */,
+				792612F419A0F9C4004CDE48 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -353,6 +360,7 @@
 				79FB0570198E317A00CA8421 /* Base */,
 				79FB0574198E318A00CA8421 /* zh-Hans */,
 				79FB0578198E318E00CA8421 /* zh-Hant */,
+				792612F719A0F9C4004CDE48 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 				79FB056F198E314D00CA8421 /* en */,
 				79FB0573198E318A00CA8421 /* zh-Hans */,
 				79FB0577198E318E00CA8421 /* zh-Hant */,
+				792612F619A0F9C4004CDE48 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
