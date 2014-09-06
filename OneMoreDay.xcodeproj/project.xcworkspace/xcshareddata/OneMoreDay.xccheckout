@@ -10,29 +10,29 @@
 	<string>OneMoreDay</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>35F81AC8-2E17-4311-918C-C4042D22C4EC</key>
+		<key>26C237D5287A6711855DD3ACFECB357DE9438337</key>
 		<string>ssh://github.com/richardchien/one-more-day.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OneMoreDay.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>35F81AC8-2E17-4311-918C-C4042D22C4EC</key>
+		<key>26C237D5287A6711855DD3ACFECB357DE9438337</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/richardchien/one-more-day.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>35F81AC8-2E17-4311-918C-C4042D22C4EC</string>
+	<string>26C237D5287A6711855DD3ACFECB357DE9438337</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>35F81AC8-2E17-4311-918C-C4042D22C4EC</string>
+			<string>26C237D5287A6711855DD3ACFECB357DE9438337</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OneMoreDay</string>
 		</dict>
