@@ -21,8 +21,6 @@
 		79F946EF198CFDDC0007D466 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946EE198CFDDC0007D466 /* XCTest.framework */; };
 		79F946F0198CFDDC0007D466 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946CC198CFDDC0007D466 /* Foundation.framework */; };
 		79F946F1198CFDDC0007D466 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F946D0198CFDDC0007D466 /* UIKit.framework */; };
-		79F946F9198CFDDC0007D466 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79F946F7198CFDDC0007D466 /* InfoPlist.strings */; };
-		79F946FB198CFDDC0007D466 /* OneMoreDayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */; };
 		79FB056C198E314900CA8421 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79FB056E198E314900CA8421 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +38,6 @@
 		792612F419A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		792612F519A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		792612F619A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		792612F719A0F9C4004CDE48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79506BC7198E11A20039ACF0 /* AMPopTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPopTip.h; sourceTree = "<group>"; };
 		79506BC8198E11A20039ACF0 /* AMPopTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPopTip.m; sourceTree = "<group>"; };
 		79551026198DF71D00667506 /* LCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCAlertView.h; sourceTree = "<group>"; };
@@ -60,23 +57,17 @@
 		79F946E7198CFDDC0007D466 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		79F946ED198CFDDC0007D466 /* OneMoreDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneMoreDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F946EE198CFDDC0007D466 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		79F946F6198CFDDC0007D466 /* OneMoreDayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneMoreDayTests-Info.plist"; sourceTree = "<group>"; };
-		79F946F8198CFDDC0007D466 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneMoreDayTests.m; sourceTree = "<group>"; };
 		79FB0568198E30E900CA8421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79FB056A198E313000CA8421 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		79FB056B198E314400CA8421 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79FB056D198E314900CA8421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79FB056F198E314D00CA8421 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		79FB0570198E317A00CA8421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79FB0571198E318A00CA8421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		79FB0572198E318A00CA8421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		79FB0573198E318A00CA8421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		79FB0574198E318A00CA8421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		79FB0575198E318E00CA8421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		79FB0576198E318E00CA8421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		79FB0577198E318E00CA8421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		79FB0578198E318E00CA8421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				79F946D2198CFDDC0007D466 /* OneMoreDay */,
-				79F946F4198CFDDC0007D466 /* OneMoreDayTests */,
 				79F946CB198CFDDC0007D466 /* Frameworks */,
 				79F946CA198CFDDC0007D466 /* Products */,
 			);
@@ -175,24 +165,6 @@
 				79FB056E198E314900CA8421 /* Localizable.strings */,
 				79F946D8198CFDDC0007D466 /* main.m */,
 				79F946DA198CFDDC0007D466 /* OneMoreDay-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		79F946F4198CFDDC0007D466 /* OneMoreDayTests */ = {
-			isa = PBXGroup;
-			children = (
-				79F946FA198CFDDC0007D466 /* OneMoreDayTests.m */,
-				79F946F5198CFDDC0007D466 /* Supporting Files */,
-			);
-			path = OneMoreDayTests;
-			sourceTree = "<group>";
-		};
-		79F946F5198CFDDC0007D466 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				79F946F6198CFDDC0007D466 /* OneMoreDayTests-Info.plist */,
-				79F946F7198CFDDC0007D466 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -291,7 +263,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79F946F9198CFDDC0007D466 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79F946FB198CFDDC0007D466 /* OneMoreDayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,18 +321,6 @@
 				792612F419A0F9C4004CDE48 /* fr */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		79F946F7198CFDDC0007D466 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79F946F8198CFDDC0007D466 /* en */,
-				79FB0570198E317A00CA8421 /* Base */,
-				79FB0574198E318A00CA8421 /* zh-Hans */,
-				79FB0578198E318E00CA8421 /* zh-Hant */,
-				792612F719A0F9C4004CDE48 /* fr */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		79FB056E198E314900CA8421 /* Localizable.strings */ = {
