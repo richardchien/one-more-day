@@ -7,7 +7,7 @@ This is an iOS app that helps you form habits.
     <img src="http://i.imgur.com/GX20WoH.png?1?4716" alt="app-store-badge" width="200" height="63" />
 </a>
 
-####License
+###License
 
 >The MIT License (MIT)
 >
